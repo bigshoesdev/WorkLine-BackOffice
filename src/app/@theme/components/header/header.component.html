@@ -1,0 +1,18 @@
+<div class="header-container"
+     [class.left]="position === 'normal'"
+     [class.right]="position === 'inverse'">
+  <div class="logo-containter">
+    <a (click)="toggleSidebar()" href="#" class="navigation"><i class="nb-menu"></i></a>
+    <div class="logo" (click)="goToHome()">WorkLine - <span>BackOffice</span></div>
+  </div>
+</div>
+
+<nb-actions
+  size="medium"
+  class="header-container"
+  [class.right]="position === 'normal'"
+  [class.left]="position === 'inverse'">
+  <nb-action>
+    <nb-user [menu]="userMenu" [name]="user?.name" [picture]="serverUrl + user?.avatar" (menuClick)="menuClick($event)"></nb-user>
+  </nb-action>
+</nb-actions>

@@ -1,0 +1,43 @@
+<ngx-auth-layout>
+    <div auth-layout-content>
+        <h1 class="text-center">SIGN IN</h1>
+        <form [formGroup]="form" (ngSubmit)="doLogin(form.value)">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <input type="text" class="form-control" [formControl]="email" [ngClass]="{'form-control-danger': (!email.valid && email.touched), 'form-control-success': (email.valid && email.touched)}"
+                            placeholder="Email">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <input type="password" class="form-control" [formControl]="password" [ngClass]="{'form-control-danger': (!password.valid && password.touched), 'form-control-success': (password.valid && password.touched)}"
+                            placeholder="Password">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <nb-checkbox>Remember me</nb-checkbox>
+                            <!-- <a class="forgot-password pull-right">Forgot Password?</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <button class="btn btn-block btn-hero-success" [disabled]="!form.valid">
+                            Sign In
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <toaster-container></toaster-container>
+    </div>
+</ngx-auth-layout>

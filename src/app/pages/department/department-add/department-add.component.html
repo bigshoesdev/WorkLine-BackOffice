@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-md-8 offset-md-1">
+        <nb-card>
+            <nb-card-body>
+                <form (ngSubmit)="saveDepartment(form.value)">
+                    <div class="form-group row">
+                        <label for="name" class="col-sm-3 col-form-label">Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="name" placeholder="Name" [formControl]="name" [ngClass]="{'form-control-danger': (!name.valid && name.touched), 'form-control-success': (name.valid && name.touched)}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="company" class="col-sm-3 col-form-label">Company</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" id="company" [formControl]="company" [ngClass]="{'form-control-danger': (!company.valid && company.touched), 'form-control-success': (company.valid && company.touched)}">
+                                <option [value]="company.id" *ngFor="let company of companyList">{{company.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="manual_counter" class="col-sm-3 col-form-label">Manual Counter</label>
+                        <div class="col-sm-9">
+                            <label class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="manual_counter" [formControl]="manual_counter" [ngClass]="{'form-control-danger': (!manual_counter.valid && manual_counter.touched), 'form-control-success': (manual_counter.valid && manual_counter.touched)}">
+                                <span class="custom-control-indicator"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="qr_option" class="col-sm-3 col-form-label">QR Option</label>
+                        <div class="col-sm-9">
+                            <label class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="qr_option" [formControl]="qr_option" [ngClass]="{'form-control-danger': (!qr_option.valid && qr_option.touched), 'form-control-success': (qr_option.valid && qr_option.touched)}">
+                                <span class="custom-control-indicator"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="offset-sm-3 col-sm-6">
+                            <button [disabled]="!form.valid" type="submit" class="btn btn-primary btn-block">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>
+<toaster-container></toaster-container>

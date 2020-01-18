@@ -1,0 +1,63 @@
+<ngx-auth-layout>
+    <div auth-layout-content>
+        <h1 class="text-center">SIGN UP</h1>
+        <form [formGroup]="form" (ngSubmit)="doRegister(form.value)">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <input type="text" class="form-control" [formControl]="name" [ngClass]="{'form-control-danger': (!name.valid && name.touched), 'form-control-success': (name.valid && name.touched)}"
+                            placeholder="Name">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <input type="email" class="form-control" [formControl]="email" [ngClass]="{'form-control-danger': (!email.valid && email.touched), 'form-control-success': (email.valid && email.touched)}"
+                            placeholder="Email">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <input type="password" class="form-control" [formControl]="password" [ngClass]="{'form-control-danger': (!password.valid && password.touched), 'form-control-success': (password.valid && password.touched)}"
+                            placeholder="Password">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <input type="password" class="form-control" [formControl]="repeatPassword" [ngClass]="{'form-control-danger': (!repeatPassword.valid && repeatPassword.touched), 'form-control-success': (repeatPassword.valid && repeatPassword.touched)}"
+                            placeholder="Confirm Password">
+                        <small *ngIf="!passwords.valid && (password.touched || repeatPassword.touched)" class="form-text error">
+                            Password does not match the confirm password or should be more than 4 in length.
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <button class="btn btn-block btn-hero-success" [disabled]="!form.valid">
+                            SIGN UP
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col-sm-12">
+                <p class="text-body">
+                    Aleady have an account?
+                    <a routerLink="/auth/login">
+                        <strong>SIGN IN</strong>
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <toaster-container></toaster-container>
+    </div>
+</ngx-auth-layout>

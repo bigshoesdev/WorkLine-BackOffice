@@ -1,0 +1,88 @@
+<div class="row">
+    <div class="col-md-8 offset-md-1">
+        <nb-card>
+            <nb-card-body>
+                <form (ngSubmit)="saveCompany(form.value)">
+                    <div class="form-group row">
+                        <label for="name" class="col-sm-3 col-form-label">Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="name" placeholder="Name" [formControl]="name" [ngClass]="{'form-control-danger': (!name.valid && name.touched), 'form-control-success': (name.valid && name.touched)}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="cif" class="col-sm-3 col-form-label">CIF</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="cif" placeholder="CIF" [formControl]="cif" [ngClass]="{'form-control-danger': (!cif.valid && cif.touched), 'form-control-success': (cif.valid && cif.touched)}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="contact" class="col-sm-3 col-form-label">Contact</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="contact" placeholder="Contact" [formControl]="contact" [ngClass]="{'form-control-danger': (!contact.valid && contact.touched), 'form-control-success': (contact.valid && contact.touched)}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="mobile" class="col-sm-3 col-form-label">Mobile</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="mobile" placeholder="Mobile" [formControl]="mobile" [ngClass]="{'form-control-danger': (!mobile.valid && mobile.touched), 'form-control-success': (mobile.valid && mobile.touched)}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="email" class="col-sm-3 col-form-label">Email</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="email" placeholder="Email" [formControl]="email" [ngClass]="{'form-control-danger': (!email.valid && email.touched), 'form-control-success': (email.valid && email.touched)}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="address" class="col-sm-3 col-form-label">Address</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="address" placeholder="Address" [formControl]="address" [ngClass]="{'form-control-danger': (!address.valid && address.touched), 'form-control-success': (address.valid && address.touched)}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="rate" class="col-sm-3 col-form-label">Rate</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="rate" placeholder="Rate" step="0.01" [formControl]="rate" [ngClass]="{'form-control-danger': (!rate.valid && rate.touched), 'form-control-success': (rate.valid && rate.touched)}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3">Status</label>
+                        <div class="col-sm-9">
+                            <div class="form-check">
+                                <label class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" name="status" [value]="0" [formControl]="status">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">Active</span>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" name="status" [value]="1" [formControl]="status">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">Inactive</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-9 offset-sm-3">
+                            <div class="row">
+                                <div class="col-sm-3" *ngFor="let dept of departmentList">
+                                    <button class="btn btn-success" type="button">
+                                        {{dept.name}}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="offset-sm-3 col-sm-6">
+                            <button [disabled]="!form.valid" type="submit" class="btn btn-primary btn-block">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>
+<toaster-container></toaster-container>
